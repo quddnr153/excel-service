@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.bw.excel.api.mapper.ExcelMapper">
+    <insert id="insertExcelMaster" parameterType="io.bw.excel.api.model.ExcelMaster">
+        INSERT INTO excel_master
+        (
+          excel_request_user_id
+        , excel_request_service_id
+        , excel_callback_url
+        , excel_json_content
+        )
+        VALUES
+        (
+          #{excelRequestUserId}
+        , #{excelRequestServiceId}
+        , #{excelCallbackUrl}
+        , #{excelJsonContent}
+        )
+    </insert>
+</mapper>
