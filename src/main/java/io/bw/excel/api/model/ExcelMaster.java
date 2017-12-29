@@ -15,13 +15,14 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExcelMaster {
-    private long excelSeq;
+    private long excelMasterSeq;
     @NotNull
     private String excelRequestUserId;
     @NotNull
     private String excelRequestServiceId;
     @NotNull
-    private String excelCallbackUrl;
+    private String templateId;
     @NotNull
     private String excelJsonContent;
+    private String status;
 }

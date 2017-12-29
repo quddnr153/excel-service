@@ -23,7 +23,12 @@ public class ExcelController {
 
     @RequestMapping(value = "/excels", method = RequestMethod.POST)
     public String storeExcelContent(@Valid @RequestBody ExcelMaster excelMaster) {
-        excelBO.createExcelMaster(excelMaster);
+        if (!excelBO.isValidTemplateId(excelMaster.getTemplateId())) {
+            // TODO: API result 자세히 구분하기
+            return "FAIL";
+        }
+
+        excelBO.preprocessExcelCreation(excelMaster);
         return "SUCCESS";
     }
 }

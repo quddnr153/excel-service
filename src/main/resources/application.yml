@@ -9,6 +9,7 @@ spring:
         username: sa
         password:
         schema: classpath:schema-h2.sql
+        data: classpath:data-h2.sql
         initialize: true
         platform: h2
     jpa:

@@ -11,5 +11,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ExcelMapper {
+    boolean selectExcelTemplateForValidation(String templateId);
+
     void insertExcelMaster(ExcelMaster excelMaster);
+
+    void insertExcelContent(ExcelMaster excelMaster);
 }

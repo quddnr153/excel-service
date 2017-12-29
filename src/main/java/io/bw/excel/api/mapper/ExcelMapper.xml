@@ -4,20 +4,54 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="io.bw.excel.api.mapper.ExcelMapper">
+    <select id="selectExcelTemplateForValidation" parameterType="string" resultType="boolean">
+        SELECT COUNT(*)
+          FROM DUAL
+         WHERE EXISTS (
+                        SELECT 'x'
+                          FROM excel_template
+                         WHERE template_id = #{templateId}
+                      )
+    </select>
+
     <insert id="insertExcelMaster" parameterType="io.bw.excel.api.model.ExcelMaster">
         INSERT INTO excel_master
         (
           excel_request_user_id
         , excel_request_service_id
-        , excel_callback_url
-        , excel_json_content
+        , template_id
+        , request_date
+        , modify_date
+        , status
         )
         VALUES
         (
           #{excelRequestUserId}
         , #{excelRequestServiceId}
-        , #{excelCallbackUrl}
+        , #{templateId}
+        , CURRENT_TIMESTAMP()
+        , CURRENT_TIMESTAMP()
+        , #{status}
+        )
+        <selectKey resultType="long" keyProperty="excelMasterSeq" order="AFTER">
+            CALL SCOPE_IDENTITY()
+        </selectKey>
+    </insert>
+
+    <insert id="insertExcelContent" parameterType="io.bw.excel.api.model.ExcelMaster">
+        INSERT INTO excel_content
+        (
+          excel_master_seq
+        , contents
+        , request_date
+        , modify_date
+        )
+        VALUES
+        (
+          #{excelMasterSeq}
         , #{excelJsonContent}
+        , CURRENT_TIMESTAMP()
+        , CURRENT_TIMESTAMP()
         )
     </insert>
 </mapper>

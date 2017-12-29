@@ -8,5 +8,7 @@ import io.bw.excel.api.model.ExcelMaster;
  * https://github.com/quddnr153
  */
 public interface ExcelBO {
-    void createExcelMaster(ExcelMaster excelMaster);
+    void preprocessExcelCreation(ExcelMaster excelMaster);
+
+    boolean isValidTemplateId(String templateId);
 }
