@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>excel-service</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Excel service</h1>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>excel seq</th>
+            <th>file path</th>
+            <th>file name</th>
+            <th>description</th>
+            <th>service code</th>
+            <th>register date</th>
+            <th>modify date</th>
+            <th>model json format</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="excelTemplate : ${excelTemplate}">
+            <td th:text="${excelTemplate.fileName}"></td>
+            <td th:text="${excelTemplate.filePath}"></td>
+            <td th:text="${excelTemplate.serviceCode}"></td>
+            <td th:text="${excelTemplate.registerDate}"></td>
+            <td th:text="${excelTemplate.modiftDate}"></td>
+            <td th:text="${excelTemplate.modelJsonFormat}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,1 +1,0 @@
-INSERT INTO excel_template VALUES ('test_id', 'template_demo.xlsx', 'bw', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), 'bw');
