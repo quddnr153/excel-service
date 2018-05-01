@@ -23,7 +23,7 @@ import javax.persistence.Table;
 public class ExcelTemplate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long excelSeq;
+    private long excelTemplateSeq;
     private String filePath;
     private String fileName;
     private String serviceCode;

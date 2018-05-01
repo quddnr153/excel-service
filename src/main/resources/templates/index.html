@@ -6,9 +6,71 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Excel service</h1>
 
-<div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a class="navbar-brand" href="/">Excel service</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTarget" aria-controls="navbarTarget" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTarget">
+        <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTemplateModal">
+            Add template
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addTemplateModal" tabindex="-1" role="dialog" aria-labelledby="addTemplateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addTemplateModalLabel">Register Excel Template</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="serviceCode">Service code</label>
+                                <input type="text" class="form-control" name="serviceCode" id="serviceCode" placeholder="Your service code" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fileName">File name</label>
+                                <input type="text" class="form-control" name="fileName" id="fileName" placeholder="template-ex" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" name="description" id="description" placeholder="description" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="modelJsonFormat">Model Json Format</label>
+                                <textarea type="text" class="form-control" name="modelJsonFormat" id="modelJsonFormat" placeholder="{logId: long, content: String, ...}" required></textarea>
+                            </div>
+                            <div class="custom-file">
+                                <label for="excelTemplateFile">Excel Template File</label>
+                                <input type="file" class="custom-file-input" name="excelTemplateFile" id="excelTemplateFile" required>
+                                <label class="custom-file-label" for="excelTemplateFile">Choose file</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <table class="table">
         <thead>
         <tr>
