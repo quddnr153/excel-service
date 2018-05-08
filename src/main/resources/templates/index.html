@@ -38,7 +38,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="excel-template-addition-form">
                             <div class="form-group">
                                 <label for="serviceCode">Service code</label>
                                 <input type="text" class="form-control" name="serviceCode" id="serviceCode" placeholder="Your service code" required>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Add</button>
+                                <button id="excel-template-addition-button" type="button" class="btn btn-primary">Add</button>
                             </div>
                         </form>
                     </div>
@@ -99,5 +99,26 @@
 
 <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<script type="application/javascript">
+    jQuery(document).ready(function () {
+        jQuery("#excel-template-addition-button").click(addExcelTemplate);
+    });
+
+    function addExcelTemplate() {
+        jQuery.ajax({
+            method: "GET",
+            url: "/excels",
+            data: jQuery("#excel-template-addition-form").serialize(),
+            success: function () {
+                // TODO: success control
+            },
+            error: function () {
+                // TODO: error control
+            }
+        });
+    }
+</script>
+
 </body>
 </html>
